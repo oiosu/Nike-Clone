@@ -1,0 +1,20 @@
+.event-package-box {
+  min-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+
+  border: 1px dotted blue;
+}
+
+.event-title {
+  font-weight: bold;
+}
+
+.event-package-infos {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

@@ -1,0 +1,18 @@
+.middle-imgs {
+  width: auto;
+  padding: 10px 50px 10px 50px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.middle-imgs img {
+  width: 27%;
+}
+
+.middle-imgs img:hover {
+  transform: scale(1.01);
+  transition-property: transform;
+  transition: 0.7s;
+}
