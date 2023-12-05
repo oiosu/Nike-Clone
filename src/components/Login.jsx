@@ -5,52 +5,51 @@ const User = {
   email: "dlgpdnjs28@gmail.com",
   pw: "dlgpdnjs28!!!",
 };
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const emailRegex =
+      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    setEmailValid(emailRegex.test(email));
+
+    const pwRegex =
+      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+    setPwValid(pwRegex.test(pw));
+  }, [email, pw]);
+
+  useEffect(() => {
+    setNotAllow(!(emailValid && pwValid));
+  }, [emailValid, pwValid]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    const regex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    if (regex.test(email)) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
   };
 
   const handlePassword = (e) => {
     setPw(e.target.value);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-    if (regex.test(pw)) {
-      setPwValid(true);
-    } else {
-      setPwValid(false);
-    }
   };
-
-  useEffect(() => {
-    if (emailValid && pwValid) {
-      setNotAllow(false);
-      return;
-    }
-    setNotAllow(true);
-  }, [emailValid, pwValid]);
 
   const onClickConfirmButton = () => {
     if (email === User.email && pw === User.pw) {
       alert("로그인에 성공했습니다.");
+      setIsLoggedIn(true);
     } else {
       alert("등록되지 않은 회원입니다.");
     }
   };
 
+  const onClickLogoutButton = () => {
+    setIsLoggedIn(false);
+    setEmail("");
+    setPw("");
+  };
   return (
     <div className="page">
       <div className="titleWrap">
@@ -103,15 +102,20 @@ const Login = () => {
           )}
         </div>
       </div>
-
       <div>
-        <button
-          onClick={onClickConfirmButton}
-          disabled={notAllow}
-          className="bottomButton"
-        >
-          확인
-        </button>
+        {isLoggedIn ? (
+          <button onClick={onClickLogoutButton} className="bottomButton">
+            로그아웃
+          </button>
+        ) : (
+          <button
+            onClick={onClickConfirmButton}
+            disabled={notAllow}
+            className="bottomButton"
+          >
+            확인
+          </button>
+        )}
       </div>
     </div>
   );
