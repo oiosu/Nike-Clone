@@ -29,7 +29,7 @@ const StyledSwiperContainer = styled.div`
 
 
 const Apparel = () => {
-    const [swiperRef, setSwiperRef] = useState(null);
+    const [setSwiperRef] = useState(null);
 
     return (
         <>
