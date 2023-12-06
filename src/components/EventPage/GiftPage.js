@@ -1,13 +1,13 @@
 import React from "react";
 import TopAndDownPic from "./TopAndDownPic";
-import toppic from "../assets/toppic.png";
-import downpic from "../assets/downpic.png";
+import toppic from "../../assets/toppic.png";
+import downpic from "../../assets/downpic.png";
 
-import MiddlePic from "../components/MiddlePic";
+import MiddlePic from "./MiddlePic";
 
-import middlepic1 from "../assets/middlepic1.png";
-import middlepic2 from "../assets/middlepic2.png";
-import middlepic3 from "../assets/middlepic3.png";
+import middlepic1 from "../../assets/middlepic1.png";
+import middlepic2 from "../../assets/middlepic2.png";
+import middlepic3 from "../../assets/middlepic3.png";
 
 const GiftPage = () => {
   return (
