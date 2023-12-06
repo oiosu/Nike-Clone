@@ -8,6 +8,7 @@ import Apparel from "./components/MainPage/Apparel";
 import VictoryF from "./components/MainPage/VictoryF";
 import LastContainer from "./components/MainPage/LastContainer";
 import Ad from "./components/MainPage/Ad";
+import Footer from "./components/MainPage/Footer";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <VictoryF />
       <LastContainer />
       <Ad />
+      <Footer />
     </div>
   );
 }
