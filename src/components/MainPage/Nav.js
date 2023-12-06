@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-
+import nikeLogo from './img/nike-logo.png';
 
 const MainMenu = styled.nav`
     display: flex;
@@ -70,8 +70,7 @@ const Nav = () => {
         <MainMenu>
             <div className="MainNav">
                 <div className="nike_logo">
-                    {/* 이미지 추가작업 필요 */}
-                    {/* <img src={nikeLogo} alt="Logo" /> */}
+                    <img src={nikeLogo} alt="Logo" />
                 </div>
                 <div className="MenuList">
                     <ul>
