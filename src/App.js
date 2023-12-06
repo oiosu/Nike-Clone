@@ -1,10 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import Product from './pages/Product';
+import Header from "./components/MainPage/Header";
 
 function App() {
   return (
-    <Product/>
+    <Header />
   );
 }
 
