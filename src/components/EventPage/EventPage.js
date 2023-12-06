@@ -2,8 +2,8 @@ import React from "react";
 import "./EventPage.css";
 import PackageInfo from "./PackageInfo";
 
-import package1 from "../assets/package1.png";
-import package2 from "../assets/package2.png";
+import package1 from "../../assets/package1.png";
+import package2 from "../../assets/package2.png";
 
 const title1 = "나이키 홀리데이 패키지";
 const title2 = "나이키 홀리데이 패키지";
