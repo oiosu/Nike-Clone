@@ -6,6 +6,7 @@ import MainContainer from "./components/MainPage/MainContainer";
 import Gift from "./components/MainPage/Gift";
 import Apparel from "./components/MainPage/Apparel";
 import VictoryF from "./components/MainPage/VictoryF";
+import LastContainer from "./components/MainPage/LastContainer";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Gift />
       <Apparel />
       <VictoryF />
+      <LastContainer />
     </div>
   );
 }
