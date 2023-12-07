@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-// import ScrollToTopButton from "./ScrollToTopButton";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 // img
 import Ad1 from './img/ad1.png';
@@ -116,7 +116,7 @@ const Ad = () => {
                     </div>
                 </div>
             </div>
-            {/* <ScrollToTopButton /> */}
+            <ScrollToTopButton />
         </AdContainer>
     );
 };
