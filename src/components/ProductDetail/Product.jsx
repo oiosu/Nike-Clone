@@ -1,14 +1,20 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { productData } from "../data/ProductDetailData";
 
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { productData } from "../../data/ProductDetailData";
+
+import Header from "../MainPage/Header";
+import Nav from "../MainPage/Nav";
+import NavFooer from "../MainPage/NavFooer";
+import Footer from "../MainPage/Footer";
 
 const Container = styled.div`
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: column; 
+    flex-direction: column;
     max-width: 90vw;
     height: 90vh;
+    margin: 0;
 `
 
 
@@ -19,7 +25,8 @@ const Wrapper = styled.div`
     flex-direction: row; /* 세로에서 가로로 변경 */
     justify-content: flex-start; /* 왼쪽 정렬로 수정 */
     align-items: stretch; /* 세로 정렬을 늘려줌 */
-    gap: 20px; /* 간격 설정 */
+    gap: 20px;
+    margin: 0 auto;
 `;
 
 
@@ -29,8 +36,8 @@ const ImgContainer = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative; /* 부모 요소를 기준으로 자식 요소를 위치시키기 위해 필요 */
+    align-items: flex-start;
+
 `;
 
 const ThumbnailListContainer = styled.div`
@@ -41,7 +48,6 @@ const ThumbnailListContainer = styled.div`
     height: 100%; /* 부모 컨테이너의 높이를 상속 */
     align-items: flex-end; /* 자식 수직 중앙 정렬을 위한 설정 */
     padding: 0px 25px;
-
 `;
 
 const ThumbnailImg = styled.img`
@@ -55,7 +61,6 @@ const ThumbnailImg = styled.img`
 `
 
 
-
 const Image = styled.img`
     width: 100%;
     max-width: 650px; /* 최대 가로 넓이 설정 */
@@ -65,12 +70,8 @@ const Image = styled.img`
     /*height: 90vh;*/
     object-fit: cover;
     border-radius: 8px;
-    position: absolute; /* 부모 요소를 기준으로 위치를 조정할 수 있도록 설정 */
     top: 0; /* 부모 요소의 위쪽에 위치하도록 설정 */
-    
- 
 `;
-
 
 
 const InfoContainer = styled.div`
@@ -79,7 +80,6 @@ const InfoContainer = styled.div`
     max-width: 500px;
     margin: 30px;
 `
-
 
 const ProductCategoryInfo = styled.h5`
     color: rgb(153, 46, 0);
@@ -137,7 +137,7 @@ const SizeFormContainer = styled.div`
     margin-top: 30px;
     margin-left: 6px;
     width: 100%; /* Set width to 100% */
-    justify-content: space-between; 
+    justify-content: space-between;
     display: flex;
 `
 
@@ -145,12 +145,12 @@ const SizeFormContainer = styled.div`
 const SizeInput = styled.button`
     border: 1px solid rgba(0, 0, 0, 0.1); /* 어두운 테두리 색상 */
     background-color: rgb(255, 255, 255);
-    width: 70px; 
-    height: 50px; 
-    font-size: 16px; 
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
-    
+   
     &:hover {
         border: 1px solid black;
         font-weight: 550;
@@ -160,17 +160,17 @@ const SizeInput = styled.button`
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 10px, 0px;
+    padding: 10px 0px;
 `
 
 
 const ButtonLogin = styled.button`
     border: 1px solid #808080;
     background-color: black;
-    width: 100%; 
-    height: 60px; 
+    width: 100%;
+    height: 60px;
     color: white;
-    font-size: 16px; 
+    font-size: 16px;
     border-radius: 20px;
     padding: 10px;
     margin: 10px 0;
@@ -184,9 +184,9 @@ const ButtonLogin = styled.button`
 const ButtonWishList = styled.button`
     border: 1px solid rgba(0, 0, 0, 0.1); /* 어두운 테두리 색상 */
     background-color: rgb(255, 255, 255);
-    width: 100%; 
-    height: 60px; 
-    font-size: 16px; 
+    width: 100%;
+    height: 60px;
+    font-size: 16px;
     border-radius: 20px;
     padding: 10px;
     margin: 10px 0;
@@ -195,7 +195,6 @@ const ButtonWishList = styled.button`
         border: 1px solid black;
         font-weight: 550;
     }
-
 `
 
 const Details = styled.details`
@@ -208,7 +207,7 @@ const Details = styled.details`
 const Summary = styled.summary`
     outline: none;
     user-select: none;
-    list-style: none; 
+    list-style: none;
     padding: 28px 0px;
 `
 
@@ -221,24 +220,25 @@ const DetailImgWrapper = styled.div`
     flex-direction: column; /* 세로로 정렬로 변경 */
     width: 100%; /* 창의 가로 넓이를 100%로 설정 */
     transition: margin-top 0.3s ease-in-out;
-    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '100px')};
+    margin-top: ${({ isopen }) => (isopen ? '150px' : '0px')};
 `
 
 
 
 const DetailImgContainer = styled.div`
-    display: flex; /* 이미지들을 가로로 나열하기 위해 flex 속성 추가 */
+    display: flex;
+    flex-direction: column; /* 이미지를 세로로 나열하도록 설정 */
     gap: 10px;
     position: relative;
     width: 100%; /* 원하는 너비 설정 */
     height: auto; /* 원하는 높이 설정 또는 고정된 높이 사용 */
-    flex-direction: row;
     justify-content: center; /* 자식 가로 중앙 정렬 */
     align-items: center; /* 자식 세로 중앙 정렬 */
-    margin-left: 150px;
-    margin-right:150px;
-    margin-bottom:150px;
- 
+    padding-left: 150px;
+    padding-right:150px;
+    padding-bottom:150px;
+    padding-top: 0; /* 변경된 부분: margin-top을 0으로 고정 */
+    box-sizing: border-box;
 
  
 `
@@ -252,17 +252,84 @@ const DetailImage = styled.img`
     max-height: 820px;
 `
 
+const ScrollButton = styled.button`
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: ${props => props.show ? 'inline' : 'none'}; /* showScrollButton 값에 따라 동적으로 설정 */
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 999;
+
+    &:hover {
+        background-color: #333;
+    }
+`;
 
 
 
-const Product = () => {
+
+const Product = ({ selectedProductId: propSelectedProductId }) => {
+
+    // 페이지 상단으로 스크롤하는 함수
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
+    const [showScrollButton, setShowScrollButton] = useState(false);
+
+    // 페이지가 로드되었을 때와 스크롤할 때 이벤트 리스너 등록
+    useEffect(() => {
+
+        const handleScroll = () => {
+            // 페이지의 스크롤 위치를 확인해 버튼을 보이거나 숨김
+            const scrollY = window.scrollY; /*현재 페이지 세로 스크롤 위치*/
+            const threshold = 200;
+            const shouldShow = scrollY > threshold;
+            setShowScrollButton(shouldShow);
+        };
+
+        // 초기에 한 번 호출하여 초기 상태 설정
+        handleScroll();
+
+        // 이벤트 리스너 등록
+        window.addEventListener("scroll", handleScroll);
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 해제
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행
 
 
     // 폼 데이터를 관리하기 위한 상태 훅 사용
     const [selectedSize, setSelectedSize] = useState('');
     const [productId, setProductId] = useState('000001');
-    const [selectedProductId, setSelectedProductId] = useState('000001');
+    const [selectedProductId, setSelectedProductId] = useState({
+        productId: '000001',
+        thumbnailIndex: 0,
+        thumbnails: productData.find((p) => p.id === '000001')?.thumbnails || [],
+    });
     const [isReviewOpen, setIsReviewOpen] = useState(false);
+    const [thumbnailIndex, setThumbnailIndex] = useState(0);
+    const thumbnailUrl = selectedProductId.thumbnails[thumbnailIndex];
+
+    if (!selectedProductId) {
+        // 상품이 존재하지 않으면 오류를 방지하기 위해 처리할 내용 추가
+        console.error(`상품 ID ${selectedProductId.productId}에 해당하는 상품을 찾을 수 없습니다.`);
+        return null;
+
+    }
+    /*.error(`상품 ID 체크중 ${selectedProductId.productId}`);*/
+
 
 
     // 폼 제출 처리
@@ -271,32 +338,48 @@ const Product = () => {
 
         // TODO: 서버로 폼 데이터를 보내는 로직 추가
         console.log('상품 ID:', productId);
-        console.log('선택된 사이즈:', selectedSize);
         console.log('productData', productData);
+        /* console.log('selectedID', selectedProductId);*/
+        /*  console.log('선택된 사이즈:', selectedSize);*/
 
         // 폼 데이터를 서버로 보내는 로직을 추후 추가 해야할 부분
     };
 
-    const handleClickThumbnail = (productId) => {
-        setSelectedProductId(productId);
+    const handleClickThumbnail = (productId, thumbnailIndex) => {
+        setSelectedProductId({
+            productId,
+            thumbnailIndex,
+            thumbnails: selectedProductId?.thumbnails || [],
+        });
+
+        // 추가: 클릭한 썸네일의 인덱스 업데이트
+        setThumbnailIndex(thumbnailIndex);
     };
 
     /*Nar, header Container 바로 밑에넣기 */
     return (
         <Container>
+            <ScrollButton show={showScrollButton} id="scroll-top-button" onClick={scrollToTop}>
+                ▲
+            </ScrollButton>
+            <Header />
+            <Nav />
+            <NavFooer />
+
             <Wrapper>
                 <ThumbnailListContainer>
-
-                    {productData.map((product) => (
-                        product.thumbnails.map((thumbnailUrl) => (
-                            <ThumbnailImg key={thumbnailUrl} src={thumbnailUrl}
-                                onClick={() => handleClickThumbnail(product.id)}
-                            />
-                        ))
-                    ))}
+                    {productData
+                        .filter(product => product.id === selectedProductId.productId)
+                        .map((product) => (
+                            product.thumbnails.map((thumbnailUrl, index) => (
+                                <ThumbnailImg key={`${selectedProductId.productId}-${index}`} src={thumbnailUrl}
+                                    onClick={() => handleClickThumbnail(selectedProductId.productId, index)}
+                                />
+                            ))
+                        ))}
                 </ThumbnailListContainer>
                 <ImgContainer>
-                    <Image src={productData.find((p) => p.id === selectedProductId)?.thumbnails[0]} />
+                    <Image src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8e612413-a0a2-4c16-884e-c1e9f3dfaed7/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%EC%BB%AC%EB%A0%89%EC%85%98-%EC%97%AC%EC%84%B1-%ED%95%98%EC%9D%B4-%ED%8C%8C%EC%9D%BC-%ED%94%8C%EB%A6%AC%EC%8A%A4-%ED%95%98%ED%94%84%EC%A7%91-%ED%83%91-pIOgPBLx.png" />
                 </ImgContainer>
                 <InfoContainer>
                     <ProductCategoryInfo>멤버 전용 제품</ProductCategoryInfo>
@@ -308,8 +391,14 @@ const Product = () => {
                     <ImageContainer>
                         <FieldsetImg>
                             <MainThumbnailImg>
-                                <ThumbnailImg src="https://static.nike.com/a/images/t_PDP_144_v1/f_auto/35e4fce7-7a32-471b-836a-4fe3595426a7/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%EC%BB%AC%EB%A0%89%EC%85%98-%EC%97%AC%EC%84%B1-%ED%95%98%EC%9D%B4-%ED%8C%8C%EC%9D%BC-%ED%94%8C%EB%A6%AC%EC%8A%A4-%ED%95%98%ED%94%84%EC%A7%91-%ED%83%91-pIOgPBLx.png" />
-                                <ThumbnailImg src="https://static.nike.com/a/images/t_PDP_144_v1/f_auto/a76ab7e5-3f8b-495e-8c6c-bb12f9f877da/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%EC%BB%AC%EB%A0%89%EC%85%98-%EC%97%AC%EC%84%B1-%ED%95%98%EC%9D%B4-%ED%8C%8C%EC%9D%BC-%ED%94%8C%EB%A6%AC%EC%8A%A4-%ED%95%98%ED%94%84%EC%A7%91-%ED%83%91-pIOgPBLx.png" />
+                                <ThumbnailImg
+                                    src={productData[0].thumbnails[0]} // 0번째 인덱스의 썸네일 사용
+                                    onClick={() => handleClickThumbnail(productId, thumbnailIndex)}
+                                />
+                                <ThumbnailImg
+                                    src={productData[1].thumbnails[0]} // 0번째 인덱스의 썸네일 사용
+                                    onClick={() => handleClickThumbnail(productId, thumbnailIndex)}
+                                />
                             </MainThumbnailImg>
                         </FieldsetImg>
                     </ImageContainer>
@@ -379,25 +468,23 @@ const Product = () => {
                         <Summary>추가 정보</Summary>
                         <MoreInfoP>
                             상품정보제공고시<br />
-                            제조연월: 수입제품으로 각 제품별 입고 시기에 따라 상이하여 정확한 제조연월 제공이 어렵습니다. <br />
                         </MoreInfoP>
                     </Details>
                 </InfoContainer>
-
-
             </Wrapper>
 
-            <DetailImgWrapper isOpen={isReviewOpen}>
+            <DetailImgWrapper isopen={isReviewOpen ? "true" : "false"}>
                 <DetailImgContainer>
-                    <DetailImage src={productData.find((p) => p.id === selectedProductId)?.thumbnails[0]} />
-                    <DetailImage src={productData.find((p) => p.id === selectedProductId)?.thumbnails[1]} />
+                    {productData.find((p) => p.id === selectedProductId.productId)?.thumbnails.map((thumbnailUrl, index) => (
+                        <DetailImage key={index} src={thumbnailUrl} />
+                    ))}
                 </DetailImgContainer>
             </DetailImgWrapper>
 
+            <Footer />
         </Container>
+
     )
 };
 
 export default Product;
-
-
