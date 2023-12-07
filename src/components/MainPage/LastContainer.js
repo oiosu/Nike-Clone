@@ -5,7 +5,6 @@ import React from 'react';
 import LastImg1 from './img/lastimg1.png';
 import LastImg2 from './img/lastimg2.png';
 
-
 const LastSection = styled.section`
     .AirMax {
         display: flex;
@@ -44,8 +43,13 @@ const LastSection = styled.section`
         padding-left: 10px;
         padding-right: 10px;
         margin: 10px;
+        &:hover {
+        background: cornflowerblue;
+        color: white;
+        transition: 0.5s;
+        font-weight: bold;
+        }
     }
-
     .shop-title {
         font-size: 21px;
         font-weight: bold;
@@ -61,6 +65,7 @@ const LastSection = styled.section`
 const LastContainerComponent = () => {
     return (
         <LastSection>
+
             {/* 에어맥스 필스 롬 section */}
             <div className="AirMax">
                 <img src={LastImg1} alt="LastImg1" />
@@ -74,6 +79,7 @@ const LastContainerComponent = () => {
                     <button className="buy-btn">구매하기</button>
                 </div>
             </div>
+
             {/* GORE-TEX section */}
             <div className="AirMax">
                 <img src={LastImg2} alt="LastImg2" />
