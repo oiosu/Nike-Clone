@@ -95,7 +95,7 @@ const Footer = () => {
                 </span>
             </div>
             <div className="footer-text">
-                © 2023 SuperCoding FE 01팀, Inc. All Rights Reserved.
+                © 2023 SuperCoding FE 01, Inc. All Rights Reserved.
             </div>
 
         </FooterSection>
