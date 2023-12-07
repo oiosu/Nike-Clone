@@ -6,13 +6,7 @@ const FooterSection = styled.section`
     .footer-section {
         background-color: #111;
         width: 100%;
-        height: 250px;
-    }
-
-    .footer-section {
-        background-color: #111;
-        width: 100%;
-        height: 300px;
+        height: 330px;
         display: flex;
         justify-content: flex-start;
     }
@@ -45,10 +39,11 @@ const FooterSection = styled.section`
     }
 
     .share-btn {
-        display: felx;
+        display: flex;
         justify-content: flex-end;
         margin-left: 430px;
-        margin-top: 60px;
+        margin-top: 0px;
+        margin-bottom: 134px;
         margin-right: 30px;
     }
 
@@ -59,8 +54,11 @@ const FooterSection = styled.section`
         background-color: #111;
         text-align: center;
         margin-top: -50px;
+        font-size: 13px;
+        font-weight: bold;
     }
 `;
+
 
 const Footer = () => {
     return (
@@ -97,10 +95,11 @@ const Footer = () => {
                 </span>
             </div>
             <div className="footer-text">
-                © 2023 SuperCoding, Inc. All Rights Reserved, FE 01.
+                © 2023 SuperCoding FE 01, Inc. All Rights Reserved.
             </div>
 
         </FooterSection>
+
     );
 };
 
