@@ -63,8 +63,7 @@ const clothesData=[
         price: 119000,
         discount:35,
         date: new Date('2023-10-17 10:20:30')
-    }
-    ,
+    },
     {
         id: 7,
         src:"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/81f15dfb-47cb-498e-8ff6-e5563f452891/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%8C%A8%EB%94%A9-%EC%97%AC%EC%84%B1-%EC%8D%A8%EB%A7%88-%ED%95%8F-%EB%A3%A8%EC%A6%88-%ED%95%8F-%ED%9B%84%EB%93%9C-%EC%9E%AC%ED%82%B7-qvz6nPhT.png",
@@ -95,6 +94,39 @@ const clothesData=[
         info: "여성 재킷",
         color: "2개 색상",
         price: 199000,
+        discount:35,
+        date: new Date('2023-12-17 10:20:30')
+    },
+    {
+        id: 10,
+        src:"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/35106472-f83f-45b5-84c2-a6f5e09582f6/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%ED%94%BC%EB%8B%89%EC%8A%A4-%ED%94%8C%EB%A6%AC%EC%8A%A4-%EC%97%AC%EC%84%B1-%EC%98%A4%EB%B2%84-%EC%98%A4%EB%B2%84%EC%82%AC%EC%9D%B4%EC%A6%88-%ED%92%80%EC%98%A4%EB%B2%84-%ED%9B%84%EB%94%94-EDom5Ail.png",
+        alt:"",
+        name: "나이키 스포츠웨어 피닉스 플러스",
+        info: "여성 오버-오버사이즈 풀오버 후디",
+        color: "3개 색상",
+        price: 105000,
+        discount:35,
+        date: new Date('2023-12-20 10:20:30')
+    },
+    {
+        id:11,
+        src:"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0f2ee7c7-583d-4bf1-8ab0-64f2caf7764d/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%9B%A8%EC%96%B4-%EC%97%AC%EC%84%B1-%EB%B2%A8%EB%A3%A8%EC%96%B4-%ED%81%AC%EB%A1%AD-%ED%92%80%EC%98%A4%EB%B2%84-%ED%9B%84%EB%94%94-gbykO9bi.png",
+        alt:"",
+        name: "나이키 스포츠웨어",
+        info: "여성 벨루어 크롭 풀오버 후디",
+        color: "3개 색상",
+        price: 115000,
+        discount:35,
+        date: new Date('2023-11-15 10:20:30')
+    },
+    {
+        id: 12,
+        src:"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/dbf3b87f-a309-40b6-939d-ff8d5af4ff24/%EC%A1%B0%EB%8D%98-%EC%97%AC%EC%84%B1-%EC%BD%94%EB%93%80%EB%A1%9C%EC%9D%B4-%EC%8B%9C%EC%B9%B4%EA%B3%A0-%ED%8C%AC%EC%B8%A0-UlgtTJOE.png",
+        alt:"",
+        name: "조던",
+        info: "여성 코로듀이 시카고 팬츠",
+        color: "2개 색상",
+        price: 139000,
         discount:35,
         date: new Date('2023-12-17 10:20:30')
     }
