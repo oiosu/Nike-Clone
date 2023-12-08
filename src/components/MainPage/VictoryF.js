@@ -50,6 +50,12 @@ const VictoryF = styled.section`
         padding-left: 10px;
         padding-right: 10px;
         margin: 10px;
+        &:hover {
+        background: cornflowerblue;
+        color: white;
+        transition: 0.5s;
+        font-weight: bold;
+        }
     }
     .buy-btn {
         background-color: #000;
@@ -60,6 +66,12 @@ const VictoryF = styled.section`
         padding-left: 10px;
         padding-right: 10px;
         margin: 10px;
+        &:hover {
+        background: cornflowerblue;
+        color: white;
+        transition: 0.5s;
+        font-weight: bold;
+        }
     }
     .AirForce img {
         display: flex;

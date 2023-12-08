@@ -1,14 +1,17 @@
-import styled from "styled-components";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import nikeLogo from './img/nike-logo.png';
+// import page
+import EventMainPage from "../EventPage/EventMainPage";
+
 
 const MainMenu = styled.nav`
     display: flex;
     flex-flow: row wrap;
     background: #fff;
-    width: 100%; 
+    width: 100%;
     height: 70px;
-
 
     .MainNav {
         display: flex;
@@ -18,7 +21,7 @@ const MainMenu = styled.nav`
     }
 
     .nike_logo {
-        margin-left: 140px; 
+        margin-left: 140px;
     }
 
     .MenuList {
@@ -27,11 +30,11 @@ const MainMenu = styled.nav`
         font-size: 14px;
         font-weight: bold;
     }
-    
+
     ul {
         display: flex;
         justify-content: center;
-        list-style: none; 
+        list-style: none;
         margin: 0;
         padding: 0;
     }
@@ -45,10 +48,9 @@ const MainMenu = styled.nav`
     .UserMenu {
         margin-right: 20px;
         margin-bottom: 10px;
-
     }
 
-    input{
+    input {
         margin-right: 15px;
         visibility: visible;
         background: #f5f5f5;
@@ -56,21 +58,121 @@ const MainMenu = styled.nav`
         cursor: text;
     }
 
-    span{
+    .search {
+        background-color: #fff;
+        border-radius: 30px;
+        height: 20px;
+        margin-right: 25px;
+    }
+
+    span {
         margin-right: 10px;
         font-size: 14px;
         font-weight: bold;
     }
 
+    a {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    a:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 4px;
+        background-color: #000;
+        transition: all 0.5s;
+    }
+    a:before {
+        content: "";
+        position: absolute;
+        right: 50%;
+        bottom: 0;
+        width: 0;
+        height: 4px;
+        background-color: #000;
+        transition: all 0.5s;
+    }
+    a:hover:after {
+        width: 50%;
+    }
+    a:hover:before {
+        width: 50%;
+    }
 `;
 
+const Modal = styled.div`
+    position: absolute;
+    top: 90px;
+    left: 0;
+    margin-left: 1080px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 13px;
+    z-index: 2;
+    height: 18px;
+    font-size: 12px;
+    font-weight: bold;
+`;
 
 const Nav = () => {
+    const navigate = useNavigate();
+
+    const navigateEvent = () => {
+        navigate("/event");
+    }
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const [relatedSearches, setRelatedSearches] = useState([]);
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const handleDocumentClick = (e) => {
+        if (!e.target.closest('.Modal') && isModalVisible) {
+            setModalVisible(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleDocumentClick);
+        return () => {
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, [isModalVisible]);
+
+    const handleSearchInputChange = (e) => {
+        const newQuery = e.target.value;
+        setSearchQuery(newQuery);
+
+        if (newQuery.trim() === '') {
+            setModalVisible(false);
+        } else {
+            const relatedSearchesList = [
+                `${newQuery} 신발`,
+                `${newQuery} 할인`,
+                `${newQuery} 스타일링`,
+            ];
+            setRelatedSearches(relatedSearchesList);
+            setModalVisible(true);
+        }
+    };
+
+    const handleSearchSubmit = (e) => {
+        console.log('검색어: ', searchQuery);
+        e.preventDefault();
+    };
+
     return (
         <MainMenu>
             <div className="MainNav">
                 <div className="nike_logo">
-                    <img src={nikeLogo} alt="Logo" />
+                    <a href="/">
+                        <img src={nikeLogo} alt="Logo" />
+                    </a>
                 </div>
                 <div className="MenuList">
                     <ul>
@@ -78,18 +180,46 @@ const Nav = () => {
                         <li>Men</li>
                         <li>Women</li>
                         <li>Kids</li>
-                        <li>Sale</li>
+                        <li>
+                            <button onClick={navigateEvent}>
+                                Sale
+                            </button>
+                        </li>
                         <li>SNKRS</li>
-                        <li>연말을 위한 선물</li>
+                        <li>
+                            <button onClick={navigateEvent}>
+                                연말을 위한 선물
+                            </button>
+                        </li>
+
                     </ul>
                 </div>
-                <div className="UserMenu">
-                    <input />
-                    <span>위시리스트</span>
-                    <span>장바구니</span>
-                </div>
 
+                <div className="UserMenu">
+                    <form onSubmit={handleSearchSubmit}>
+                        <input
+                            className="search"
+                            type="text"
+                            placeholder="검색"
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
+                        />
+                        {isModalVisible && (
+                            <Modal className="Modal">
+                                <ul>
+                                    {relatedSearches.map((item, index) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
+                                </ul>
+                            </Modal>
+
+                        )}
+                    </form>
+                </div>
             </div>
+            <Routes>
+                <Route path="/evnet" element={<EventMainPage />} />
+            </Routes>
         </MainMenu>
     );
 };

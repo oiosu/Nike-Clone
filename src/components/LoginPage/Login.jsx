@@ -56,10 +56,10 @@ const Login = () => {
         <h1>Nike</h1>
         <div className="images">
           <a href="#" className="nikeLogo">
-            <img src="/assets/나이키로고.png" alt="나이키로고" />
+            <img src="/assets/nikeLogo.png" alt="나이키로고" />
           </a>
           <a href="#" className="jordanLogo">
-            <img src="/assets/조던로고.png" alt="조던로고" />
+            <img src="/assets/jordanLogo.png" alt="조던로고" />
           </a>
         </div>
         <br />

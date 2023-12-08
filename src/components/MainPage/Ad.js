@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
+import ScrollToTopButton from "./ScrollToTopButton";
 
 // img
 import Ad1 from './img/ad1.png';
@@ -34,11 +35,9 @@ const AdContainer = styled.section`
 
     .ad-title {
         font-size: 20px;
-        font-weigt: bold;
+        font-weight: bold; 
         margin-right: 90.5px;
         padding-right: 10px;
-
-
     }
 
     .ad-text {
@@ -55,6 +54,12 @@ const AdContainer = styled.section`
         padding-right: 10px;
         margin-top: 20px;
         margin-bottom: 100px;
+        &:hover {
+        background: cornflowerblue;
+        color: white;
+        transition: 0.5s;
+        font-weight: bold;
+        }
     }
 `;
 
@@ -68,7 +73,6 @@ const Ad = () => {
                 </div>
                 <div className="adimg">
                     <img src={Ad1} alt="Gift1" style={{ height: '400px', width: 'auto', marginBottom: '20px' }} />
-
                     <img src={Ad2} alt="Gift1" style={{ height: '400px', width: 'auto', marginBottom: '20px' }} />
                     <img src={Ad3} alt="Gift1" style={{ height: '400px', width: 'auto', marginBottom: '20px' }} />
                     <img src={Ad4} alt="Gift1" style={{ height: '400px', width: 'auto', marginBottom: '20px' }} />
@@ -110,10 +114,9 @@ const Ad = () => {
                         </div>
                         <button>자세히 보기</button>
                     </div>
-
                 </div>
             </div>
-
+            <ScrollToTopButton />
         </AdContainer>
     );
 };
