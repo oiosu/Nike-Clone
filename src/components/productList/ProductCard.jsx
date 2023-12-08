@@ -9,7 +9,7 @@ const ProductCard = (props) => {
                     <Title>{props.name}</Title>
                     <SubInfo>{props.info}</SubInfo>
                     <SubInfo>{props.color}</SubInfo>
-                    <Price>{props.price}</Price>
+                    <Price>{props.price}원</Price>
 
                 </Wrapper>
                 

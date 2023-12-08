@@ -29,7 +29,7 @@ const Products = (props) => {
     
           case '낮은 가격순':
             // 낮은 가격순으로 정렬
-            return itemsCopy.sort((a, b) => a.price - b.price);
+            return itemsCopy.sort((a, b) => a.price - b.price)
     
           default:
             // 기본적으로는 추천순으로 정렬
@@ -45,7 +45,7 @@ const Products = (props) => {
                     <ProductCard key ={index} id={item.id}  
                     src={item.src} name={item.name} 
                     info={item.info} color={item.color} 
-                    price={item.price} discount={item.discount}/>
+                    price={item.price.toLocaleString()} discount={item.discount}/>
                 ))}
             </List>
             

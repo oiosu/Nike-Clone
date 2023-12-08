@@ -9,7 +9,7 @@ const ProductsFilter = (props) => {
         <FilterControl>
             <CategoryLabel>여성 의류(40)</CategoryLabel>
             <FilterSelect value={props.selected} onChange={dropdownChangeHandler}>
-                <option hidden value='정렬기준'>정렬기준: ⅴ</option>
+                <option hidden value='정렬기준'>정렬기준:</option>
                 <option value='추천순'>추천순</option>
                 <option value='최신순'>최신순</option>
                 <option value='높은 가격순'>높은 가격순</option>
@@ -31,7 +31,7 @@ const FilterControl = styled.div`
 
 const CategoryLabel = styled.div`
     font-Size: 1.4rem;
-    font-weight: 549;
+    font-weight: 550;
     padding: 0.5rem 0.5rem;
 `;
 
@@ -41,15 +41,10 @@ const WrapperSelect =styled.select`
 const FilterSelect =styled.select`
     font: inherit;
     font-Size: 1rem;
-    margin: 0rem 1.7rem;
-    padding: 0.5rem 3rem;
-    font-weight: 300;
+    margin: 0rem 2.5rem;
+    padding: 0.5rem 0.6rem 0.5rem 0.5rem;
     border:none;
     text-align: right;
     background-color: white;
-    padding: 0px 6px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none;
+    font-weight: 500;
 `;
