@@ -1,6 +1,12 @@
-import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, Routes, Outlet } from 'react-router-dom';
+import styled from "styled-components";
 import nikeLogo from './img/nike-logo.png';
+// Link
+import EventMainPage from '../EventPage/EventMainPage';
+// import EventPage from "./EventPage";
+// import GiftPage from "./GiftPage";
+
 
 const MainMenu = styled.nav`
     display: flex;
@@ -118,15 +124,23 @@ const Modal = styled.div`
     font-size: 12px;
     font-weight: bold;
 `;
-// eslint-disable-next-line
-const variableWithoutDeclaration = 42;
+
+// 각각의 컴포넌트 정의하기 
+// const EventMainPage = () => {
+//     return (
+//         <>
+//             <EventPage />
+//             <GiftPage />
+//         </>
+//     );
+// };
+
 
 const Nav = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [relatedSearches, setRelatedSearches] = useState([]);
     const [isModalVisible, setModalVisible] = useState(false);
 
-    //모달 영역 외 클릭했을 때 모달 닫기 
     const handleDocumentClick = (e) => {
         if (!e.target.closest('.Modal') && isModalVisible) {
             setModalVisible(false);
@@ -138,7 +152,6 @@ const Nav = () => {
         return () => {
             document.removeEventListener('click', handleDocumentClick);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isModalVisible]);
 
     const handleSearchInputChange = (e) => {
@@ -146,10 +159,8 @@ const Nav = () => {
         setSearchQuery(newQuery);
 
         if (newQuery.trim() === '') {
-            // 검색어 비어져 있으면 모달 숨기기
             setModalVisible(false);
         } else {
-            // 검색어가 있으면 모달 보이도록 함
             const relatedSearchesList = [
                 `${newQuery} 신발`,
                 `${newQuery} 할인`,
@@ -158,58 +169,70 @@ const Nav = () => {
             setRelatedSearches(relatedSearchesList);
             setModalVisible(true);
         }
-    }
+    };
 
     const handleSearchSubmit = (e) => {
         console.log('검색어: ', searchQuery);
-        // 서버 요청 등 검색 처리 로직 추가
-
-        // 새로고침 방지
         e.preventDefault();
-    }
+    };
+
 
 
     return (
-        <MainMenu>
-            <div className="MainNav">
-                <div className="nike_logo">
-                    <img src={nikeLogo} alt="Logo" />
-                </div>
-                <div className="MenuList">
-                    <ul>
-                        <li><a>New Releases</a></li>
-                        <li><a>Men</a></li>
-                        <li><a>Women</a></li>
-                        <li><a>Kids</a></li>
-                        <li><a>Sale</a></li>
-                        <li><a>SNKRS</a></li>
-                        <li><a>연말을 위한 선물</a></li>
-                    </ul>
+        <Router>
+            <MainMenu>
+                <div className="MainNav">
+                    <div className="nike_logo">
+                        <Link to="/">
+                            <img src={nikeLogo} alt="Logo" />
+                        </Link>
+                    </div>
+                    <div className="MenuList">
+                        <ul>
+                            <li><Link to="/new-releases">New Releases</Link></li>
+                            <li><a>Men</a></li>
+                            <li><a>Women</a></li>
+                            <li><a>Kids</a></li>
+                            <li>Sale</li>
+                            <li><a>SNKRS</a></li>
+                            <li><Link to="/event">연말을 위한 선물</Link></li>
+                        </ul>
+                    </div>
+
+                    <div className="UserMenu">
+                        <form onSubmit={handleSearchSubmit}>
+                            <input
+                                className="search"
+                                type="text"
+                                placeholder="검색"
+                                value={searchQuery}
+                                onChange={handleSearchInputChange}
+                            />
+                            {isModalVisible && (
+                                <Modal className="Modal">
+                                    <ul>
+                                        {relatedSearches.map((item, index) => (
+                                            <li key={index}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </Modal>
+                            )}
+                        </form>
+                    </div>
                 </div>
 
-                <div className="UserMenu">
-                    <form onSubmit={handleSearchSubmit}>
-                        <input
-                            className="search"
-                            type="text"
-                            placeholder="검색"
-                            value={searchQuery}
-                            onChange={handleSearchInputChange}
-                        />
-                        {isModalVisible && (
-                            <Modal className="SearchModal">
-                                <ul>
-                                    {relatedSearches.map((item, index) => (
-                                        <li key={index}>{item}</li>
-                                    ))}
-                                </ul>
-                            </Modal>
-                        )}
-                    </form>
-                </div>
-            </div>
-        </MainMenu>
+            </MainMenu>
+
+            <Routes>
+                <Route path="/event" element={<EventMainPage />} />
+                <Route path="/" element={<Outlet />}>
+                    <Route index element={<main />} />
+                </Route>
+            </Routes>
+
+        </Router>
     );
+
 };
 
 export default Nav;
