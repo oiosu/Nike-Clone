@@ -1,30 +1,24 @@
 import React from "react";
 import Header from "./components/MainPage/Header";
-import Nav from "./components/MainPage/Nav";
-import NavFooer from "./components/MainPage/NavFooer";
-import MainContainer from "./components/MainPage/MainContainer";
-import Gift from "./components/MainPage/Gift";
-import Apparel from "./components/MainPage/Apparel";
-import VictoryF from "./components/MainPage/VictoryF";
-import LastContainer from "./components/MainPage/LastContainer";
-import Ad from "./components/MainPage/Ad";
+import MainPage from "./components/MainPage/MainPageC";
 import Footer from "./components/MainPage/Footer";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EventMainPage from "./components/EventPage/EventMainPage";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Nav />
-      <NavFooer />
-      <MainContainer />
-      <Gift />
-      <Apparel />
-      <VictoryF />
-      <LastContainer />
-      <Ad />
-      <Footer />
-    </div>
+    <>
+      <div className="App">
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/event" element={<EventMainPage />} />
+          </Routes>
+        </BrowserRouter>
+        <Footer />
+      </div>
+    </>
   );
 }
 
