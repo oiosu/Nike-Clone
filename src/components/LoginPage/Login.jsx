@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 // css import
 import "../LoginPage/Login.css";
-import Nav from "../MainPage/Nav";
-import NavFooter from "../MainPage/NavFooter";
+// import Nav from "../MainPage/Nav";
+// import Footer from "../MainPage/Footer";
 
 const User = {
   email: "dlgpdnjs28@gmail.com",
@@ -125,6 +125,7 @@ const Login = () => {
           )}
         </div>
       </div>
+      {/* <Footer /> */}
     </>
   );
 };

@@ -197,9 +197,9 @@ const Nav = () => {
     <MainMenu>
       <div className="MainNav">
         <div className="nike_logo">
-          <button href="/">
+          <a href="/">
             <img className="logoLogo" src={nikeLogo} alt="Logo" />
-          </button>
+          </a>
         </div>
         <div className="MenuList">
           <ul>
