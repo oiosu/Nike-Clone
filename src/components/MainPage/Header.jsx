@@ -36,6 +36,43 @@ const TopMenu = styled.header`
     &:hover {
       text-decoration: underline;
     }
+
+    button {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      border-style: none;
+      background-color: #f5f5f5;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    button:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 4px;
+      background-color: #000;
+      transition: all 0.5s;
+    }
+    button:before {
+      content: "";
+      position: absolute;
+      right: 50%;
+      bottom: 0;
+      width: 0;
+      height: 4px;
+      background-color: #000;
+      transition: all 0.5s;
+    }
+    button:hover:after {
+      width: 50%;
+    }
+    button:hover:before {
+      width: 50%;
+    }
   }
 
   .modal {
