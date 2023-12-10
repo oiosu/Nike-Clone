@@ -41,7 +41,6 @@ const Products = (props) => {
 
   return (
     <>
-      <Nav />
       <Box>
         <ProductsFilter
           selected={filtered}
@@ -62,7 +61,6 @@ const Products = (props) => {
           ))}
         </List>
       </Box>
-      {/* <Footer /> */}
     </>
   );
 };
