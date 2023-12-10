@@ -4,7 +4,7 @@ import ProductsFilter from "./ProductsFilter";
 import styled from "styled-components";
 // import page
 import Nav from "../MainPage/Nav";
-import Footer from "../MainPage/Footer";
+// import Footer from "../MainPage/Footer";
 
 const Products = (props) => {
   const [filtered, setFiltered] = useState("");
@@ -24,17 +24,14 @@ const Products = (props) => {
 
       case "최신순":
         // 최신순으로 정렬 (가장 최근 날짜가 먼저 오도록)
-        // return itemsCopy.sort((a, b) => new Date(b.date) - new Date(a.date));
         return itemsCopy.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       case "높은 가격순":
         // 높은 가격순으로 정렬
-        // return itemsCopy.sort((a, b) => b.price - a.price);
         return itemsCopy.sort((a, b) => b.price - a.price);
 
       case "낮은 가격순":
         // 낮은 가격순으로 정렬
-        // return itemsCopy.sort((a, b) => a.price - b.price);
         return itemsCopy.sort((a, b) => a.price - b.price);
       default:
         // 기본적으로는 추천순으로 정렬
