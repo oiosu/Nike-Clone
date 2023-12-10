@@ -8,6 +8,7 @@ import LastContainer from "./LastContainer";
 import Ad from "./Ad";
 import Nav from "./Nav";
 import NavFooter from "./NavFooter";
+import Footer from "./Footer";
 
 const MainPageContainer = styled.div``;
 
@@ -24,6 +25,7 @@ const MainPageC = () => {
         <LastContainer />
         <Ad />
       </MainPageContainer>
+      <Footer />
     </>
   );
 };

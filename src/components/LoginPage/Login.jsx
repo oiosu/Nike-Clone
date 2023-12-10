@@ -1,104 +1,9 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-// import page
-// import Nav from "../MainPage/Nav";
-// import NavFooter from "../MainPage/NavFooter";
-// import Footer from "../MainPage/Footer";
-
-const LoginPage = styled.div`
-  .page {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    max-width: 500px;
-    padding: 0 20px;
-
-    left: 50%;
-    transform: translate(-50%);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .images {
-    display: flex;
-  }
-  .nikeLogo {
-  }
-  .jodarnLogo {
-  }
-  img {
-    width: 70px;
-    height: 70px;
-    margin-left: 20px;
-  }
-
-  .titleWrap {
-    margin-top: 87px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #000000;
-  }
-  .contentWrap {
-    margin-top: 26px;
-    flex: 1;
-  }
-
-  .inputTitle {
-    font-size: 12px;
-    font-weight: 600;
-    color: #000000;
-  }
-
-  .inputWrap {
-    display: flex;
-    border-radius: 8px;
-    padding: 16px;
-    margin-top: 8px;
-    background-color: white;
-    border: 1px solid #71777c;
-  }
-
-  .inputWrap:focus-within {
-    border: 1px solid #232323;
-  }
-
-  .input {
-    width: 100%;
-    outline: none;
-    border: none;
-    height: 17px;
-    font-size: 14px;
-    font-weight: 400;
-  }
-
-  .input::placeholder {
-    color: #dadada;
-  }
-
-  .errorMessageWrap {
-    margin-top: 8px;
-    color: #ef0000;
-    font-size: 12px;
-  }
-
-  .bottomButton {
-    width: 100%;
-    height: 48px;
-    border: none;
-    font-weight: 700;
-    background-color: #71777c;
-    color: #fff;
-    margin-bottom: 90px;
-    cursor: pointer;
-  }
-
-  .bottomButton:disabled {
-    background-color: #dadada;
-    color: white;
-  }
-`;
+// css import
+import "../LoginPage/Login.css";
+import Nav from "../MainPage/Nav";
+import NavFooter from "../MainPage/NavFooter";
 
 const User = {
   email: "dlgpdnjs28@gmail.com",
@@ -151,6 +56,8 @@ const Login = () => {
   };
   return (
     <>
+      {/* <Nav /> */}
+
       <div className="page">
         <div className="titleWrap">
           <h1>Nike</h1>

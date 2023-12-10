@@ -57,6 +57,7 @@ const TopMenu = styled.header`
 
 const Header = () => {
   const navigate = useNavigate();
+  // 로그인 페이지
   const navigateLogin = () => {
     navigate("/login");
   };
