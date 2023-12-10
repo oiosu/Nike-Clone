@@ -10,7 +10,7 @@ const ProductList = () => {
     <>
       <Nav />
       <Products items={clothesData} />
-      e <Footer />
+      <Footer />
     </>
   );
 };
