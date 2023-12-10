@@ -12,7 +12,7 @@ import nikeLogo from "./img/nike-logo.png";
 // 이벤트 페이지
 import EventMainPage from "../EventPage/EventMainPage";
 // 상품 리스트 페이지
-import Products from "../productList/Products";
+import ProductList from "../productList/ProductList";
 // 상품 디테일 페이지
 import Product from "../ProductDetail/Product";
 
@@ -147,7 +147,7 @@ const Nav = () => {
   };
   // 상품 페이지
   const navigateProduct = () => {
-    navigate("/products");
+    navigate("/productList");
   };
   // 상품 디테일 페이지
   const navigateDetail = () => {
@@ -242,7 +242,7 @@ const Nav = () => {
       </div>
       <Routes>
         <Route path="/event" element={<EventMainPage />} />
-        <Route path="/product" element={<Products />} />
+        <Route path="/product" element={<ProductList />} />
         <Route path="/detail" element={<Product />} />
       </Routes>
     </MainMenu>
