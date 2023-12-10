@@ -194,11 +194,11 @@ const Nav = () => {
             <li>New Releases</li>
             <li>Men</li>
             <li>
-              <button onClick={navigateProduct}>Woman</button>
+              <button onClick={navigateProduct}>p_Woman</button>
             </li>
             <li>Kids</li>
             <li>
-              <button onClick={navigateDetail}>Sale</button>
+              <button onClick={navigateDetail}>P_Detail</button>
             </li>
             <li>SNKRS</li>
             <li>
