@@ -9,6 +9,7 @@ import EventMainPage from "./components/EventPage/EventMainPage";
 import Product from "./components/ProductDetail/Product";
 
 import Products from "./components/productList/Products";
+import Login from "./components/LoginPage/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
+            <Route path="login" element={<Login />} />
             <Route path="/" element={<MainPage />} />
             <Route path="/event" element={<EventMainPage />} />
             <Route path="/product" element={<Products />} />
