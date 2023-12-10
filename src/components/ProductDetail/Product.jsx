@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { productData } from "../../data/ProductDetailData";
 // import page
-import Header from "../MainPage/Header";
 import Nav from "../MainPage/Nav";
 import NavFooter from "../MainPage/NavFooter";
 import Footer from "../MainPage/Footer";
@@ -11,20 +10,21 @@ const Container = styled.div`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  max-width: 90vw;
-  height: 90vh;
-  margin: 0;
+  max-width: 100%;
+  height: 100%;
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
+  /* margin-top: 10px; */
   padding: 50px;
   display: flex;
   flex-direction: row; /* 세로에서 가로로 변경 */
   justify-content: flex-start; /* 왼쪽 정렬로 수정 */
   align-items: stretch; /* 세로 정렬을 늘려줌 */
   gap: 20px;
-  margin: 0 auto;
+  margin-top: 50px;
 `;
 
 const ImgContainer = styled.div`
@@ -338,7 +338,7 @@ const Product = ({ selectedProductId: propSelectedProductId }) => {
         >
           ▲
         </ScrollButton>
-        <Header />
+
         <Nav />
         <NavFooter />
 
@@ -472,7 +472,6 @@ const Product = ({ selectedProductId: propSelectedProductId }) => {
             </Details>
           </InfoContainer>
         </Wrapper>
-
         <DetailImgWrapper isopen={isReviewOpen ? "true" : "false"}>
           <DetailImgContainer>
             {productData
@@ -483,6 +482,7 @@ const Product = ({ selectedProductId: propSelectedProductId }) => {
           </DetailImgContainer>
         </DetailImgWrapper>
       </Container>
+      <Footer />
     </>
   );
 };
