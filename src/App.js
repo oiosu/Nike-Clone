@@ -1,15 +1,16 @@
 import React from "react";
 import Header from "./components/MainPage/Header";
 import MainPage from "./components/MainPage/MainPageC";
-import Footer from "./components/MainPage/Footer";
+// import Footer from "./components/MainPage/Footer";
 // BrowserRouter
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // 성공
 import EventMainPage from "./components/EventPage/EventMainPage";
 import Product from "./components/ProductDetail/Product";
-
-import Products from "./components/productList/Products";
 import Login from "./components/LoginPage/Login";
+
+// 진행중
+import Products from "./components/productList/Products";
 
 function App() {
   return (

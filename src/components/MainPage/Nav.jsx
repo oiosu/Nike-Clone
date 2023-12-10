@@ -9,8 +9,11 @@ import {
 } from "react-router-dom";
 import nikeLogo from "./img/nike-logo.png";
 // import page
+// 이벤트 페이지
 import EventMainPage from "../EventPage/EventMainPage";
+// 상품 리스트 페이지
 import Products from "../productList/Products";
+// 상품 디테일 페이지
 import Product from "../ProductDetail/Product";
 
 const MainMenu = styled.nav`
@@ -28,7 +31,12 @@ const MainMenu = styled.nav`
   }
 
   .nike_logo {
-    margin-left: 140px;
+    margin-left: 130px;
+  }
+
+  .logoLogo {
+    width: 150px;
+    height: 60px;
   }
 
   .MenuList {
@@ -69,7 +77,7 @@ const MainMenu = styled.nav`
     background-color: #fff;
     border-radius: 30px;
     height: 20px;
-    margin-right: 25px;
+    margin-right: 22px;
   }
 
   span {
@@ -78,13 +86,17 @@ const MainMenu = styled.nav`
     font-weight: bold;
   }
 
-  a {
+  button {
     display: inline-block;
     position: relative;
     cursor: pointer;
+    border-style: none;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: bold;
   }
 
-  a:after {
+  button:after {
     content: "";
     position: absolute;
     left: 50%;
@@ -94,7 +106,7 @@ const MainMenu = styled.nav`
     background-color: #000;
     transition: all 0.5s;
   }
-  a:before {
+  button:before {
     content: "";
     position: absolute;
     right: 50%;
@@ -104,10 +116,10 @@ const MainMenu = styled.nav`
     background-color: #000;
     transition: all 0.5s;
   }
-  a:hover:after {
+  button:hover:after {
     width: 50%;
   }
-  a:hover:before {
+  button:hover:before {
     width: 50%;
   }
 `;
@@ -185,9 +197,9 @@ const Nav = () => {
     <MainMenu>
       <div className="MainNav">
         <div className="nike_logo">
-          <a href="/">
-            <img src={nikeLogo} alt="Logo" />
-          </a>
+          <button href="/">
+            <img className="logoLogo" src={nikeLogo} alt="Logo" />
+          </button>
         </div>
         <div className="MenuList">
           <ul>
