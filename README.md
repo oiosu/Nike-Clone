@@ -3,7 +3,19 @@
 
 > 팀원들이 실제로 사용하는 서비스, 2주안에 구현이 가능한 규모의 서비스 
 
-### ◾ React, JavaScript, styled-components 
+### ◾ React, styled-components 
+
+```jsx
+npx create-react-app Nike-Clone
+```
+
+```jsx
+npm start
+```
+
+```jsx
+npm install styled-components
+```
 
 ### ◾ Project 목표 
 > * 우리가 실제 서비스에서 사용하는 동작을 동일하게 구현할 수 있는가
@@ -41,39 +53,6 @@
 
 ![image](https://github.com/oiosu/Nike-Clone/assets/99783474/c3a35798-31e3-4951-a45b-8cdb7cae18c1)
 
-
----
-
-
-### ScrollToTop
-
-```jsx
-npm install react-scroll-up-button
-```
-
-### Router
-
-```jsx
-npm i react-router-dom
-```
-
-### Styled-components
-
-```jsx
-npm install styled-components
-```
-
-### Swiper
-
-```bash
-$ npm i swiper
-```
-
-### React Share
-
-```jsx
-npm install react-share
-```
 
 ---
 
@@ -174,3 +153,149 @@ const [isModalVisible, setModalVisible] = useState(false);
   )}
 </form>
 ```
+
+##### 3. `[swiper]` 자바스크립트 라이브러리 활용한 이미지 반응형 기능
+
+![image](https://github.com/oiosu/Nike-Clone/assets/99783474/be641eec-aece-4170-a93f-548ae0526c57)
+
+##### Swiper
+
+```bash
+$ npm i swiper
+```
+
+```JavaScript
+import 'swiper/swiper-bundle.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+```
+
+
+##### 4. Button hover
+
+![image](https://github.com/oiosu/Nike-Clone/assets/99783474/4cd32911-b3ba-43b9-bbcf-199db0dba3b7)
+
+
+```css
+  .buy-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 30px;
+    border-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    &:hover {
+      background: cornflowerblue;
+      color: white;
+      transition: 0.5s;
+      font-weight: bold;
+    }
+```
+
+
+
+##### 4. TOP Button
+
+![image](https://github.com/oiosu/Nike-Clone/assets/99783474/44adf4da-6f67-45c1-9721-63787ef6d73b)
+
+```JavaScript
+import React, { useState, useEffect } from 'react';
+import styled from "styled-components";
+
+const ScrollBtn = styled.button`
+    width: 80px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 1400px;
+    font-weight: bold;
+`;
+
+const ScrollToTopButton = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    const handleScroll = () => {
+        const scrollTop = window.scrollY;
+
+        if (scrollTop > 300) {
+            setIsVisible(true);
+        } else {
+            setIsVisible(false);
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    return (
+        <ScrollBtn className={isVisible ? 'visible' : 'hidden'} onClick={scrollToTop}>
+            Top
+        </ScrollBtn>
+    );
+
+};
+
+export default ScrollToTopButton;
+
+```
+
+
+##### 4. React-Share
+
+![image](https://github.com/oiosu/Nike-Clone/assets/99783474/fcc79468-dd26-4370-97b1-5a1a850f3815)
+
+##### React Share
+
+```jsx
+npm install react-share
+```
+
+
+```JavaScript
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    FacebookMessengerShareButton,
+    FacebookMessengerIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    LineShareButton,
+    LineIcon,
+} from "react-share";
+
+// currentUrl을 적절한 URL로 정의
+const currentUrl = "https://example.com";
+
+const Share = () => {
+    return (
+        <>
+            <FacebookShareButton style={{ marginRight: "20px" }} url={currentUrl}>
+                <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
+            </FacebookShareButton>
+            <FacebookMessengerShareButton style={{ marginRight: "20px" }} url={currentUrl}>
+                <FacebookMessengerIcon size={48} round={true} borderRadius={24}></FacebookMessengerIcon>
+            </FacebookMessengerShareButton>
+            <TwitterShareButton style={{ marginRight: "20px" }} url={currentUrl}>
+                <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
+            </TwitterShareButton>
+            <LineShareButton url={currentUrl}>
+                <LineIcon size={48} round={true} borderRadius={24}></LineIcon>
+            </LineShareButton>
+        </>
+    );
+}   )}
+ </li>
+```
+
