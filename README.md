@@ -1,4 +1,4 @@
-# 👟 NikeClone PJT 01
+# [👟 NikeClone PJT 01](https://cassie1107.github.io/)
 > 슈퍼코딩 1차 프로젝트 : 프론트엔드 01 팀
 
 > 팀원들이 실제로 사용하는 서비스, 2주안에 구현이 가능한 규모의 서비스 
